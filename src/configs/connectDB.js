@@ -1,23 +1,14 @@
 // const mysql = require('mysql2');
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 
-const connection = mysql.createConnection({
+console.log('Creating connection pool...');
+
+const pool = mysql.createPool({
     host:'localhost',
     user:'root',
-    password:'',
+    // password:'',
     database:'nodejsbasic',
 });
 
-// connection.query(
-//     'SELECT * FROM `users` ',
-//     function(err, results, fields){
-//         console.log(">>> check mysql: ");
-//         console.log(row);
-//         let rows = results.map((row)=>{return row});
-//         console.log(row[0]);
-//     }
-// );
 
-
-
-export default connection;
+export default pool;
