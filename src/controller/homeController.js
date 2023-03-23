@@ -5,6 +5,14 @@ let getHomePage = async (req, res) => {
   return res.render("index.ejs", { dataUser: rows });
 };
 
+let getDetailPage = async (req, res) => {
+  let userId = req.params.userId;
+  let [user] = await pool.execute("SELECT * FROM users WHERE id = ?", [userId]);
+
+  return res.send(JSON.stringify(user));
+};
+
 module.exports = {
   getHomePage,
+  getDetailPage,
 };
